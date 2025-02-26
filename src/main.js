@@ -2,6 +2,10 @@ import "./style.css";
 import javascriptLogo from "./javascript.svg";
 import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
+import Alpine from "alpinejs";
+
+window.Alpine = Alpine;
+Alpine.start();
 
 document.querySelector("#app").innerHTML = `
   <div class="p-4 space-y-2">
@@ -14,9 +18,21 @@ document.querySelector("#app").innerHTML = `
       </a>
     </div>
     <h1>Hello from Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button" class="p-1.5 bg-blue-100 rounded cursor-pointer"></button>
-    </div>
+    <button
+      id="counter"
+      type="button"
+      class="p-1.5 bg-blue-100 rounded cursor-pointer"
+    ></button>
+
+    <button
+      x-data="{
+        count: 0
+      }"
+      x-on:click="count += 1"
+      type="button" 
+      class="p-1.5 bg-green-100 rounded cursor-pointer"
+      x-text="'count is ' + count"
+    ></button>
   </div>
 `;
 
